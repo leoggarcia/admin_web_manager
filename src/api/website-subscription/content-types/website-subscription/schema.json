@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "website_subscriptions",
+  "info": {
+    "singularName": "website-subscription",
+    "pluralName": "website-subscriptions",
+    "displayName": "Website subscription",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Precio": {
+      "type": "decimal"
+    },
+    "website": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::website.website",
+      "inversedBy": "website_subscription"
+    },
+    "subscripcion_activa": {
+      "type": "boolean",
+      "default": false
+    },
+    "precio_stripe": {
+      "type": "enumeration",
+      "enum": [
+        "Sitio web $700-price_1QAMPXGChMK8V46WcFJ4CdGx"
+      ],
+      "default": "Sitio web $700-price_1QAMPXGChMK8V46WcFJ4CdGx"
+    },
+    "description": {
+      "type": "string"
+    },
+    "stripe_subscription_id": {
+      "type": "string"
+    }
+  }
+}

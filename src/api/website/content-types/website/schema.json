@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "websites",
+  "info": {
+    "singularName": "website",
+    "pluralName": "websites",
+    "displayName": "Website",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "website_status": {
+      "type": "enumeration",
+      "enum": [
+        "Indefinido-0",
+        "Diseño-1",
+        "Desarrollo-2",
+        "Publicado-3",
+        "Terminado-4"
+      ]
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "websites"
+    },
+    "website_subscription": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::website-subscription.website-subscription",
+      "mappedBy": "website"
+    }
+  }
+}
