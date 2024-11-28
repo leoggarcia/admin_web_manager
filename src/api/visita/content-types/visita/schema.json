@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "visitas",
+  "info": {
+    "singularName": "visita",
+    "pluralName": "visitas",
+    "displayName": "visita"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "referer": {
+      "type": "string"
+    },
+    "dispositivo": {
+      "type": "string"
+    },
+    "navegador": {
+      "type": "string"
+    },
+    "website": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::website.website",
+      "inversedBy": "visitas"
+    }
+  }
+}
