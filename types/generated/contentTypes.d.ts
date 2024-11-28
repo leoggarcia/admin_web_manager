@@ -1,5 +1,32 @@
 import type { Struct, Schema } from '@strapi/strapi';
 
+export interface ApiVisitaVisita extends Struct.CollectionTypeSchema {
+  collectionName: 'visitas';
+  info: {
+    singularName: 'visita';
+    pluralName: 'visitas';
+    displayName: 'visita';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    referer: Schema.Attribute.String;
+    dispositivo: Schema.Attribute.String;
+    navegador: Schema.Attribute.String;
+    website: Schema.Attribute.Relation<'manyToOne', 'api::website.website'>;
+    createdAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    publishedAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::visita.visita'>;
+  };
+}
+
 export interface ApiWebsiteWebsite extends Struct.CollectionTypeSchema {
   collectionName: 'websites';
   info: {
@@ -32,6 +59,7 @@ export interface ApiWebsiteWebsite extends Struct.CollectionTypeSchema {
       'oneToOne',
       'api::website-subscription.website-subscription'
     >;
+    visitas: Schema.Attribute.Relation<'oneToMany', 'api::visita.visita'>;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -938,6 +966,7 @@ export interface AdminTransferTokenPermission
 declare module '@strapi/strapi' {
   export module Public {
     export interface ContentTypeSchemas {
+      'api::visita.visita': ApiVisitaVisita;
       'api::website.website': ApiWebsiteWebsite;
       'api::website-subscription.website-subscription': ApiWebsiteSubscriptionWebsiteSubscription;
       'plugin::upload.file': PluginUploadFile;

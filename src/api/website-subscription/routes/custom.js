@@ -10,7 +10,7 @@ module.exports = {
         },
         {
             method: 'POST',
-            path: "/stripe_webhook",
+            path: '/stripe_webhook',
             handler: 'website-subscription.stripeWebhook',
             config: {
                 auth: false,
@@ -18,11 +18,11 @@ module.exports = {
         },
         {
             method: 'POST',
-            path: "/cancel_subscription",
+            path: '/cancel_subscription',
             handler: 'website-subscription.cancelSubscription',
             config: {
                 auth: false,
             },
-        }
+        },
     ],
 };

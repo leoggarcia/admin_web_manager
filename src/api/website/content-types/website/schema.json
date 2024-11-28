@@ -43,6 +43,12 @@
       "relation": "oneToOne",
       "target": "api::website-subscription.website-subscription",
       "mappedBy": "website"
+    },
+    "visitas": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::visita.visita",
+      "mappedBy": "website"
     }
   }
 }
